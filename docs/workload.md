@@ -1,5 +1,5 @@
 <!--
- Copyright 2019 PayPal Inc
+ Copyright 2020 PayPal Inc
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -29,10 +29,10 @@ Creating the workload:
 val workload = AnomalyWorkload.builder()
   .addAllPipelines(pipelines)
   .buildWithWatermark("timestamp", "2 hours")
- 
+
 // activating anomaly detection on all windows
 val fullScan = workload.withFullHistoryScan
- 
+
 // activating anomaly detection only on window end
 val windowEndWorkload = workload.withDetectionOnWindowEnd
 ```

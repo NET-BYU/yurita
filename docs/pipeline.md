@@ -1,5 +1,5 @@
 <!--
- Copyright 2019 PayPal Inc
+ Copyright 2020 PayPal Inc
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -75,19 +75,19 @@ Creating custom aggregations by extending this trait:
 ```
 /** factory for creating new data aggrs */
 trait DataAggregationFactory extends Serializable {
- 
+
   /** creates a new data aggr when required by window strategy */
   def createNewAggregation(): DataAggregation
 }
- 
+
 /** modeling of the data inside each window, can contain any custom logic */
 trait DataAggregation extends Serializable {
- 
+
   val metadata = new mutable.HashMap[String, String]()
- 
+
   /** adds a new metric observation to the aggr, no order of metrics is guaranteed */
   def update(trackedMetric: TrackedMetric): Unit
- 
+
   /**
    * cleans and compacts unneeded state,
    * can be used after detection or in the future automatically at the background
@@ -121,14 +121,14 @@ It is also possible to add data from the current window that is being evaluated 
 ```
 // choose ref strategy
 val ref = WindowReference.MultiRef.allWindowsInLastDuration("1 hour")
- 
+
 // specify reference watermark
 val wref = ref withWatermark "2 hours"
- 
+
 // include current window in the reference
 val iref = ref includeCurrentWindowInRef
 ```
-# Anomaly Detection Model 
+# Anomaly Detection Model
 
 Compares current window aggregation with selected reference windows and detect anomalies, the model can also produce intermediate result (e.g. the root cause of the anomaly).
 
@@ -141,7 +141,7 @@ Creating custom models by extending this trait:
 ```
 /** modeling of when a data window model is considered an anomaly, can contain any custom logic */
 trait DetectionModel extends Serializable {
- 
+
   /** checks if aggr contains anomaly, None results are ignored */
   def detect(aggr: DataAggregation, refAggr: Seq[DataAggregation]): Option[Report]
 }

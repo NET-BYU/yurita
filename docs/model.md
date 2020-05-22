@@ -1,5 +1,5 @@
 <!--
- Copyright 2019 PayPal Inc
+ Copyright 2020 PayPal Inc
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -105,7 +105,7 @@ val numericalPipes = PipelineBuilder()
     Functions.Numerical.zScore[Double],
     Functions.simpleThreshold(3.0))
 ```
-	
+
 Creating a model with a custom function:
 
 ```

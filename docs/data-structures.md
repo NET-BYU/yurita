@@ -1,5 +1,5 @@
 <!--
- Copyright 2019 PayPal Inc
+ Copyright 2020 PayPal Inc
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ We extend Spark's DataFrame API by adding the workload to the computation graph.
 ```
 // import the Dataframe api extension
 import com.paypal.risk.platform.veda.analytics.Implicits._
- 
+
 // add workload to computation
 df.detectAnomalies(workload)
 
